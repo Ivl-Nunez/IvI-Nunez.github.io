@@ -1,3 +1,16 @@
-body {
-    background-color: lightblue;
-}
+body, html {
+    height: 100%;
+  }
+  .bg {
+    /* The image used */
+    background-image: url("Images/background_image.jpg");
+    /* https://pixabay.com/illustrations/gradient-professional-background-1761190/ */
+  
+    /* Full height */
+    height: 100%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
