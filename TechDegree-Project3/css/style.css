@@ -11,13 +11,13 @@
 body,
 input,
 button {
-	font-family: 'Nunito', sans-serif;
+	font-family: 'Comic Sans MS', sans-serif;
 }
 
 body {
   font: 1em/1.5;
   color: rgba(6, 49, 68, 0.9);
-	background: #CDE0FB;
+	background: rgb(97, 253, 82);
 }
 
 header {
@@ -26,7 +26,7 @@ header {
 
 h1 {
 	font-size: 2.5em;
-	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
+	text-shadow: 3px 3px 5px rgb(175, 135, 250);
 	margin: 0;
 }
 
@@ -71,7 +71,14 @@ legend {
 input[type="text"],
 input[type="email"],
 legend {
-	width: 100%;
+	width: 100%;   
+}
+
+input[type='text'],
+input[type='email'] {
+	border-radius: 25px;
+    border: 2px solid
+	padding: 20px; 	
 }
 
 label {
@@ -124,7 +131,11 @@ button:hover {
 input, 
 select, 
 option {
-	font-family: 'roboto', sans-serif;
+	font-family: 'Comic Sans MS', sans-serif;
+}
+
+select {
+	background-color: lightyellow;
 }
 
 /* ================================= 
