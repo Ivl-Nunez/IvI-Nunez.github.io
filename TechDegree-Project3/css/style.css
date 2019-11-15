@@ -77,7 +77,7 @@ legend {
 input[type='text'],
 input[type='email'] {
 	border-radius: 25px;
-    border: 2px solid
+    border: 2px solid;
 	padding: 20px; 	
 }
 
