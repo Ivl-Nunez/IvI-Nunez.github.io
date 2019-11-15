@@ -21,6 +21,8 @@ jobroleSelector.change(() => {
   const selectedOption = $("select[name='user-title'] option:selected").text();
   if (selectedOption == "Other") {
     otherInput.show();
+  } else {
+    otherInput.hide();
   }
 }); //END_EVENT
 
@@ -40,32 +42,34 @@ colorSelector.prop("disabled", true); // Selector disabled by default
 
 // When design dropdown is changed
 designSelector.change(() => {
+  // Disables Select Theme as option
+  designSelector.find('option:contains("Select")').attr("disabled", true);
+
   const selectedOption = $("select[id='design'] option:selected").text();
   // User changes from default
   if (selectedOption !== "Select Theme") {
     colorMenu.show();
     colorSelector.prop("disabled", false); // Enable
+    colorSelector.find('option:contains("Please")').remove();
     // User chooses theme 'JS Puns'
     if (selectedOption == "Theme - JS Puns") {
-      $("option[value='cornflowerblue']").show();
+      $("option[value='cornflowerblue']").show().attr("selected", true);
       $("option[value='darkslategrey']").show();
       $("option[value='gold']").show();
-      $("option[value='tomato']").hide();
+      $("option[value='tomato']").hide().attr("selected", false);
       $("option[value='steelblue']").hide();
       $("option[value='dimgrey']").hide();
     }
     // User chooses theme 'I love JS'
     else if (selectedOption == "Theme - I ♥ JS") {
-      $("option[value='cornflowerblue']").hide();
+      $("option[value='cornflowerblue']").hide().attr("selected", false);
       $("option[value='darkslategrey']").hide();
       $("option[value='gold']").hide();
-      $("option[value='tomato']").show();
+      $("option[value='tomato']").show().attr("selected", true);
       $("option[value='steelblue']").show();
       $("option[value='dimgrey']").show();
     }
-  } else {
-    colorSelector.prop("disabled", true);
-  }
+  } 
 });
 
 /*********************************
@@ -108,8 +112,6 @@ framworkWorkshop.change(() => {
     // Disables and strikes through Express & Build Tool
     expressWorkshop.prop("disabled", true);
     expressWorkshop.closest("label").wrap("<strike>");
-    buildtoolWorkshop.prop("disabled", true);
-    buildtoolWorkshop.closest("label").wrap("<strike>");
   } else {
     // Updates Total
     workshopTotal -= 100;
@@ -117,8 +119,6 @@ framworkWorkshop.change(() => {
     // Enables and removes strikethrough on Express & Build Tool
     expressWorkshop.prop("disabled", false);
     expressWorkshop.closest("label").unwrap();
-    buildtoolWorkshop.prop("disabled", false);
-    buildtoolWorkshop.closest("label").unwrap();
   }
 });
 
@@ -131,8 +131,6 @@ libraryWorkshop.change(() => {
     // Disables and strikes through Node & NPM
     nodeWorkshop.prop("disabled", true);
     nodeWorkshop.closest("label").wrap("<strike>");
-    npmWorkshop.prop("disabled", true);
-    npmWorkshop.closest("label").wrap("<strike>");
   } else {
     // Updates Total
     workshopTotal -= 100;
@@ -140,8 +138,6 @@ libraryWorkshop.change(() => {
     // Enables and removes strikethrough on Node & NPM
     nodeWorkshop.prop("disabled", false);
     nodeWorkshop.closest("label").unwrap();
-    npmWorkshop.prop("disabled", false);
-    npmWorkshop.closest("label").unwrap();
   }
 });
 
@@ -154,8 +150,6 @@ expressWorkshop.change(() => {
     // Disables and strikes through Frameworks & Build Tool
     framworkWorkshop.prop("disabled", true);
     framworkWorkshop.closest("label").wrap("<strike>");
-    buildtoolWorkshop.prop("disabled", true);
-    buildtoolWorkshop.closest("label").wrap("<strike>");
   } else {
     // Updates Total
     workshopTotal -= 100;
@@ -163,8 +157,6 @@ expressWorkshop.change(() => {
     // Enables and removes strikethrough on Frameworks & Build Tool
     framworkWorkshop.prop("disabled", false);
     framworkWorkshop.closest("label").unwrap();
-    buildtoolWorkshop.prop("disabled", false);
-    buildtoolWorkshop.closest("label").unwrap();
   }
 });
 
@@ -177,8 +169,6 @@ nodeWorkshop.change(() => {
     // Disables and strikes through Library & NPM
     libraryWorkshop.prop("disabled", true);
     libraryWorkshop.closest("label").wrap("<strike>");
-    npmWorkshop.prop("disabled", true);
-    npmWorkshop.closest("label").wrap("<strike>");
   } else {
     // Updates Total
     workshopTotal -= 100;
@@ -186,8 +176,6 @@ nodeWorkshop.change(() => {
     // Enables and removes strikethrough on Library & NPM
     libraryWorkshop.prop("disabled", false);
     libraryWorkshop.closest("label").unwrap();
-    npmWorkshop.prop("disabled", false);
-    npmWorkshop.closest("label").unwrap();
   }
 });
 
@@ -197,20 +185,10 @@ buildtoolWorkshop.change(() => {
     // Updates Total
     workshopTotal += 100;
     totalPara.text("Total: $" + workshopTotal);
-    // Disables and strikes through Frameworks & Express
-    framworkWorkshop.prop("disabled", true);
-    framworkWorkshop.closest("label").wrap("<strike>");
-    expressWorkshop.prop("disabled", true);
-    expressWorkshop.closest("label").wrap("<strike>");
   } else {
     // Updates Total
     workshopTotal -= 100;
     totalPara.text("Total: $" + workshopTotal);
-    // Enables and removes strike through on Frameworks & Express
-    framworkWorkshop.prop("disabled", false);
-    framworkWorkshop.closest("label").unwrap();
-    expressWorkshop.prop("disabled", false);
-    expressWorkshop.closest("label").unwrap();
   }
 });
 
@@ -220,20 +198,10 @@ npmWorkshop.change(() => {
     // Updates Total
     workshopTotal += 100;
     totalPara.text("Total: $" + workshopTotal);
-    // Disables and strikes through Library & Node
-    libraryWorkshop.prop("disabled", true);
-    libraryWorkshop.closest("label").wrap("<strike>");
-    nodeWorkshop.prop("disabled", true);
-    nodeWorkshop.closest("label").wrap("<strike>");
   } else {
     // Updates Total
     workshopTotal -= 100;
     totalPara.text("Total: $" + workshopTotal);
-    // Enables and removes strike through on Library & Node
-    libraryWorkshop.prop("disabled", false);
-    libraryWorkshop.closest("label").unwrap();
-    nodeWorkshop.prop("disabled", false);
-    nodeWorkshop.closest("label").unwrap();
   }
 });
 
@@ -241,14 +209,16 @@ npmWorkshop.change(() => {
  *     Payment Info Section      *
  *********************************/
 
-// Remove default option, Credit Card is now default
-$("#payment option:selected").remove();
-
 // DOM Variables
 const paymentSelector = $("#payment");
 const creditDIV = $("#credit-card");
 const paypalDIV = $("#paypal");
 const bitcoinDIV = $("#bitcoin");
+
+// By Default
+$("#payment option:selected").remove();
+paypalDIV.hide();
+bitcoinDIV.hide();
 
 // Handles showing / hiding payments whenever selector changes
 paymentSelector.change(() => {
