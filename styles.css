@@ -1,27 +1,15 @@
-body, html {
-    height: 100%;
-  }
-  .bg {
-    /* The image used */
-   /* background-image: url("Images/background_image.jpg");*/
-    /* https://pixabay.com/illustrations/gradient-professional-background-1761190/ */
-    background-color: tan;
-    /* Full height */
-    height: 100%;
-  
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+body {
+  padding: 5px;
+  background-color: tan;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-  a {
-    color: black;
-    display: block;
-  }
-
-  * {
-    padding: 5px;
-  }
-
-
+#banner {
+  border: 2px black solid;
+  border-radius: 5px;
+  background-color: paleturquoise;
+}
+#banner h3, p {
+  text-align: center;
+  margin-top: 20px;
+}
