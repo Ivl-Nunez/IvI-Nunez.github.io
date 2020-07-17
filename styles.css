@@ -3,9 +3,9 @@ body, html {
   }
   .bg {
     /* The image used */
-    background-image: url("Images/background_image.jpg");
+   /* background-image: url("Images/background_image.jpg");*/
     /* https://pixabay.com/illustrations/gradient-professional-background-1761190/ */
-  
+    background-color: tan;
     /* Full height */
     height: 100%;
   
@@ -14,3 +14,14 @@ body, html {
     background-repeat: no-repeat;
     background-size: cover;
   }
+
+  a {
+    color: black;
+    display: block;
+  }
+
+  * {
+    padding: 5px;
+  }
+
+
